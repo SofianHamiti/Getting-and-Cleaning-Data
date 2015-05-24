@@ -31,10 +31,10 @@ names(mergedActivity)[1] <- "activityName"
 mergedData <- cbind(mergedSubject, mergedActivity, mergedData)
 mergedData <- mergedData[order(mergedData$subject),] 
 
-write.table(mergedData, "tidyData.txt")
+write.table(mergedData, "tidyData.txt", row.name=FALSE)
 
 # 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 dt <- aggregate(mergedData[, 3:ncol(mergedData)], 
                 by=list(subject = mergedData$subject, activityName = mergedData$activityName),
                 mean)
-write.table(dt, "tidyData_means.txt")
+write.table(dt, "tidyData_means.txt", row.name=FALSE)
